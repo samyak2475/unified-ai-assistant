@@ -9,11 +9,10 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 
-# ===================== SETUP =====================
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 vectorstore = None
 
-# ===================== FUNCTIONS =====================
+
 def process_pdfs(files):
     global vectorstore
     if not files:
@@ -61,7 +60,7 @@ def general_chat(message, history):
     response = ollama.chat(model='phi3:mini', messages=[{'role': 'user', 'content': message}])
     return response['message']['content']
 
-# ===================== MAIN UI =====================
+
 with gr.Blocks(title="Unified AI Assistant") as demo:
     gr.Markdown("# 🤖 Unified AI Assistant")
     gr.Markdown("**General Chat + Image Understanding + Document RAG** — All in one app")
